@@ -1,2 +1,11 @@
 @import "./setup";
-@import "./variables";
+@import "./headerStyles";
+@import "./bookShelvesStyles";
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Vollkorn&display=swap');
+
+
+.wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+  width: 90%;
+}
