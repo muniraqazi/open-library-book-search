@@ -20,15 +20,25 @@ function App() {
       })
     }, [userInput]);
 
+  // const getBookReslts = () => {
+  //   axios.get(`http://openlibrary.org/search.json?q=${userInput}`,)
+  //     .then (response => {
+  //       setBooks(response.data.docs); 
+  //     })
+  // }
+
+
     const handleChange = (event) => {
       setSearchedTitle(event.target.value)
     }
-
+    
     const handleSubmit = (event) => {
       event.preventDefault();
       setUserInput(searchedTitle);
+      // getBookReslts()
+      console.log("loading")
     }
-    console.log(userInput)
+    // console.log(userInput)
 
 
   return (
@@ -42,9 +52,7 @@ function App() {
             <button>🔍</button>
           </form>
 
-          
-
-        </div> {/**end of header container */}
+          </div> {/**end of header container */}
         <div className="shelfContainer">
           <BookShelves 
             books={books}
