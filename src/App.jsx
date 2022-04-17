@@ -9,7 +9,6 @@ import BookShelves from "./components/BookShelves";
 
 
 function App() {
-  const [coverID, setCoverID] = useState("");
   const [userInput, setUserInput] = useState("");
   const [books, setBooks] = useState([]);
   const [searchedTitle, setSearchedTitle] = useState("");
