@@ -14,7 +14,7 @@ function App() {
   const [searchedTitle, setSearchedTitle] = useState("");
 
   useEffect(() => {
-    axios.get(`http://openlibrary.org/search.json?q=${userInput}`,)
+    axios.get(`https://openlibrary.org/search.json?title=${userInput}`,)
       .then (response => {
         setBooks(response.data.docs); 
       })
