@@ -2,30 +2,27 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import "./styles/styles.scss";
 
-
-
 import BookShelves from "./components/BookShelves";
-
+import PulseLoader from "react-spinners/PulseLoader";
 
 
 function App() {
   const [userInput, setUserInput] = useState("");
   const [books, setBooks] = useState([]);
   const [searchedTitle, setSearchedTitle] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     axios.get(`https://openlibrary.org/search.json?title=${userInput}`,)
       .then (response => {
-        setBooks(response.data.docs); 
+        setBooks(response.data.docs);
+        setIsLoading(false);
+        setIsLoaded(true);
+      }).catch((error) => {
+        console.log(error)
       })
     }, [userInput]);
-
-  // const getBookReslts = () => {
-  //   axios.get(`http://openlibrary.org/search.json?q=${userInput}`,)
-  //     .then (response => {
-  //       setBooks(response.data.docs); 
-  //     })
-  // }
 
 
     const handleChange = (event) => {
@@ -35,11 +32,9 @@ function App() {
     const handleSubmit = (event) => {
       event.preventDefault();
       setUserInput(searchedTitle);
-      // getBookReslts()
-      console.log("loading........")
+      setIsLoading(true)
+      setIsLoaded(false)
     }
-    // console.log(userInput)
-
 
   return (
     <div className='wrapper'>
@@ -51,14 +46,25 @@ function App() {
             <input onChange={handleChange} type="text" placeholder="Book Title..."/>
             <button>🔍</button>
           </form>
+        </div> {/**end of header container */}
 
-          </div> {/**end of header container */}
-        <div className="shelfContainer">
+        {isLoaded ?
           <BookShelves 
             books={books}
             setBooks={setBooks}
+            isLoaded={isLoaded}
           />
-        </div>
+          : isLoading ?
+          <div className="loadingContainer">
+            <PulseLoader
+              size={15}
+              loading={true}
+              color={"rgb(207, 164, 207)"}
+            />
+            <p>Loading your search results</p>
+          </div>
+          : null}
+
       </div> {/**end of main container */}
     </div>
   );

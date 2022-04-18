@@ -9,3 +9,14 @@
   margin: 0 auto;
   width: 90%;
 }
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  p {
+    font-size: 1.1vw;
+  }
+}
