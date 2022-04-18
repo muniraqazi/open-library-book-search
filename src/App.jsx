@@ -41,7 +41,7 @@ function App() {
       <div className="mainContainer">
         <div className="headerContainer">
           <h1>✿ Little Library ✿</h1>
-          <h2>🕮 Search for any book title:</h2>
+          <h2>🕮 Search for any book by title:</h2>
           <form onSubmit={handleSubmit}>
             <input onChange={handleChange} type="text" placeholder="Book Title..."/>
             <button>🔍</button>
