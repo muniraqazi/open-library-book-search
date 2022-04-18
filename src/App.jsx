@@ -36,7 +36,7 @@ function App() {
       event.preventDefault();
       setUserInput(searchedTitle);
       // getBookReslts()
-      console.log("loading")
+      console.log("loading........")
     }
     // console.log(userInput)
 
